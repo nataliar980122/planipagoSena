@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>{% block title %} Titulo Base {% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="/media/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/media/bootstrap/css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="/media/css/excite-bike/jquery-ui-1.10.3.custom.css">
+    <script src="/media/js/ajax.js"></script>
+  <script src="/media/js/jquery.js"></script>
+  <script src="/media/js/jquery-ui.js"></script>
+  <script src="/media/bootstrap/js/bootstrap.js"></script>
+  
+   
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color:#027b74;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="#"><img src="/media/images/logopybarra.png"></a>
+      <a class="navbar-brand" href="{% url 'vista_principal' %}">PlaniPago</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!--<<li class="active"><a href="{% url 'vista_principal' %}">Inicio <span class="sr-only">(current)</span></a></li>-->
+        <!--<li><a href="#">Link</a></li>.-->
+        {% if user.is_superuser %}
+          <li class="active"><a href="{% url 'vista_agregarRegional' %}">Agregar Regional <span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="{% url 'vista_agregarCentro' %}">Agregar Centro <span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="{% url 'vista_registrarSupervisor' %}">Registrar Supervisor <span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="{% url 'vista_agregarBanco' %}">Registrar Banco <span class="sr-only">(current)</span></a></li>
+
+        
+        {% else %}
+        {% if user.is_staff %}
+           <li class="active"><a href="{% url 'vista_contratista'%}">Registrar Contratista <span class="sr-only">(current)</span></a></li>
+          <li><a href="{% url 'vista_contratistas' %}">Contratistas</a></li>
+          <li><a href="{% url 'vista_registrarOrdenador' %}">Ordenador de pago</a></li>
+          {% else %}
+           {% if user.is_active %}
+           <li><a href="{% url 'vista_pagomes' %}">Datos Del Pago</a></li>
+           <li><a href="{% url 'vista_editar_numeroplantilla' %}">N° de tu Planilla</a></li>
+           
+        {% endif %}
+        {% endif %}
+        {% endif %}
+      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        
+      </ul>
+      <form class="navbar-form navbar-left">
+        
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'vista_logout' %}">Cerrar Sesion</a></li>
+        {% else %}
+        <button type="button" class="btn btn-success btn-lg"   id="myBtn" ><a href ="{% url 'vista_login' %}">Login</a></button>
+       
+        
+
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+            {% if user.is_superuser %}
+            
+            {% else %}             
+              {% if user.is_staff %}
+              {% else %}  
+
+             {% if user.is_authenticated %}
+             <div class="container-fluid">
+    <div class="row-fluid">
+
+      <div class="span3">
+        <div class="well sidebar-nav">
+          <div class="nav nav-list">
+            
+            <br>
+                      
+            <div class="list-group" >
+                <li><a  href="{% url 'vista_listacontratista' %}">Datos Contratista</a></li>
+                <li><a href="{% url 'vista_contrato' %}">Contrato</a></li>
+                <li><a href=" /comilista/page/1/ ">Comisiones</a></li>
+                <li><a href=" /honoralista/page/1/">Honorarios</a></li>
+                <li><a href=" /actividades/page/1/">Actividades</a></li>
+                <li><a href="{% url 'vista_tabla' %}">Planilla</a></li>
+                <li><a href="{% url 'vista_listaaportes' %}">Aportes</a></li>
+              {% else %}
+               <div align="center">
+              <img src="/media/images/logopycontainer.png" width="80%" height="80%">
+            </div>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+            </div>
+            <br>
+           
+          </div>
+        </div>
+      </div>
+      <div class="span9">
+        <div class="hero-unit">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+      
+      <br>
+    </div>
+  </div>
+</body>
+
+</html>

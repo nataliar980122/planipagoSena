@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+	Lista de Contratistas
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de Contratistas</h1>
+	<br>
+	{% if user.is_authenticated %}
+
+	<a class="btn btn-success" href="{% url 'vista_contratista' %}"> Agregar Un Contratista</a>
+	<br>
+	<br>
+	{% endif %}
+	{% if contratistas %}
+	<table class = "table table-hover table-bordered">
+		<theader>
+			<tr>
+				<th>Contratista</th>
+				<th>Apellido</th>
+				<th>Telefono</th>
+				<th>Centro</th>
+				<th colspan="2">Opciones</th>
+				<th>Contrato</th>
+			</tr>
+		</theader>
+		{% for c in contratistas %}
+			<tbody>
+				<tr>
+					<td> {{ c.nombre }} </td>
+					<td> {{ c.apellido }} </td>
+					<td> {{ c.telefono }} </td>
+					<td> {{ c.centro }} </td>
+					<td> <a class = "btn btn-primary" href="/contratista/{{c.id}}"> </li> Ver </a> </td>
+					<td> <a class = "btn btn-primary" href="/edit/contratista/{{ c.id }}"> Editar</a></td>
+					{% if c.contrato.estado = 'activo' %}
+						<td> <a class = "btn btn-danger" href="{% url 'vista_editar_estado_contrato' id_contrato=c.contrato.id  %}"> Inhabilitar Contrato </a> </td>
+					{% else %}
+						<td> <a class = "btn btn-success" href="{% url 'vista_editar_estado_contrato' id_contrato=c.contrato.id  %}"> Editar estado </a> </td>
+					{% endif %}
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No hay contratistas </h2>
+	{% endif %}
+
+	
+{% endblock %}

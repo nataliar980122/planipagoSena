@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Registro {% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="jumbotron">
+		<h2>Datos Contratista</h2>
+		<div class="container">
+			<form class="form-inline" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="registrar" value="Guardar" class="btn btn-success">
+				
+		</div>
+	</div>		
+</div>	
+
+{% endblock %}

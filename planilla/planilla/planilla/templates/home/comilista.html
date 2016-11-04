@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de comisiones
+	{% endblock %}
+
+{% block content %}
+<h2>Lista de Comisiones</h2>
+<br>
+
+<a class="btn btn-primary" href="{% url 'vista_agregar_comisiones' %}"><li class="glyphicon glyphicon-plus"></li>Agregar nueva comision</a>
+<br> <br>
+{% if comilista %}
+<table class = "table table-hover table-bordered">
+		<theader>
+			<tr>
+				<th>Comision</th>
+				<th>Valor de comision</th>
+				<th>Valor retenido</th>
+				<th colspan="3">Opciones</th>
+				
+				
+				
+			</tr>
+		</theader>
+	{% for c in comilista %}
+		<tbody>
+				<tr>
+					
+					<td>{{ c.numero_comision }}</td>
+					<td>{{ c.valor_comision }}</td>
+					<td>{{ c.valor_retenido }}</td>
+					<td><a  class= "btn btn-info" href="/comisiones/{{c.id}}"> <li class="glyphicon glyphicon-eye-open"></li>  </li>Ver</a></td>
+
+
+
+
+					
+					<td>
+						
+							<a class="btn btn-warning" href="/edit/comilista/{{ c.id }}"><li class="glyphicon glyphicon-pencil"></li> Editar</a> 
+							
+					<td><a class="btn btn-danger" href="/del/comilista/{{ c.id }}"> <li class="glyphicon glyphicon-remove"></li>Eliminar</a></td>
+					</td>
+					
+				</tr>
+		</tbody>
+
+	{% endfor %}
+	</table>	
+	{% else %}
+		<h2> No existen comisiones agregadas :( </h2>
+	{% endif %}
+	<table class="table table-hover">
+		<tbody>
+			<tr>
+				<th>Total de valor comision</th>
+				<th>Total de valor retenido</th>
+
+				
+				
+		 	</tr>
+
+		 	<tr>
+		 		<td>{{ total_comision }}</td>
+				<td>{{ total_retenido_co }}</td>
+
+		 	</tr>
+		 
+		
+			
+	
+	 </tbody>
+	</table>
+	{% if comilista %}
+	<div class="pagination">
+		<div class="pagination pagination-centered">
+			<ul >
+				<button class="btn btn-success"><a href="comilista/page/1"> << </a></button>
+				{% if actividades.has_previous %} 
+				<<button class="btn btn-success"><a href="/comilista/page/{{ comilista.previous_page_number }}">Anterior </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#"> Anterior </a></button>
+				{% endif %}
+
+				{% if actividades.has_next %}
+					<button class="btn btn-success"><a href="/comilista/page/{{ comilista.next_page_number }}">Siguiente </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#">Siguiente </a></button>
+				{% endif %}
+					<button class="btn btn-success"><a href="/comilista/page/{{ comilista.paginator.num_pages }}"> >> </a></button>
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ comilista.number }} de {{ comilista.paginator.num_pages }} </h4>
+	{% endif %}
+			
+
+
+
+
+{% endblock %}

@@ -1,0 +1,461 @@
+{% block contenido %}
+<center>
+
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+<div class="container">
+  
+<div class="container">
+  <p><center><h5>FORMATO PARA PAGO DE CONTRATO DE PRESTACIÓN DE SERVICIOS PERSONALES
+  <br>CAUCA
+  <br>CENTRO DE TELEINFORMATICA Y PRODUCCION INDUSTRIAL</br></h5></center></p></div>
+
+
+<table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th><center>Código Centro</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+
+   <tbody>
+    {% for c in centro %}
+    <tr>
+     <td><center>{{ c.codigo }}</center></td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+
+
+
+  
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><h5>DATOS CONTRATISTA</h5></a>
+        </h5  >
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th>Nombres</th>
+     <th>Apellidos</th>
+     <th>Correo</th>
+     <th>Identificacion</th>
+     <th>Telefono</th>
+     <th>Regimen iva</th>
+     <th>Declarante</th>
+     <th>Pensionado</th>
+     <th>Clasificacion persona</th>
+      </tr>
+    </theader>
+    </tr>
+   </thead>
+          
+      
+   <tbody>
+    {% if contratista %}
+    <tr>
+     <td>{{ contratista.nombre }}</td>
+     <td>{{ contratista.apellido }}</td>
+     <td>{{ contratista.correo }}</td>
+     <td>{{ contratista.identificacion }}</td>
+     <td>{{ contratista.telefono }}</td>
+     <td>{{ contratista.regimen_iva }}</td>
+     <td>{{ contratista.declarante }}</td>
+     <td>{{ contratista.pensionado }}</td>
+     <td>{{ contratista.Clasificacion_persona }}</td>
+    </tr>
+
+    {% else %}
+    <tr><td colspan="4"><center>No hay contratista registrados</center></td></tr>
+    {% endif %}
+   </tbody>
+  </table>
+
+
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th><center>Banco al cual consignar</center></th>
+     </tr>
+     </theader>
+     
+    </tr>
+   </thead>
+
+   <tbody>
+    {% if banco %}
+    <tr>
+     <td><center>{{ banco.nombre_banco }}</center></td>
+    </tr>
+
+    {% else %}
+    <tr><td colspan="4"><center>No hay bancos registrados</center></td></tr>
+    {% endif %}
+   </tbody>
+  </table>
+
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th><center>N° Cuenta</center></th>
+     <th><center>Tipo de Cuenta</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+
+   <tbody>
+    {% if cuenta %}
+    <tr>
+     <td><center>{{ cuenta.num_cuenta }}</center></td>
+     <td><center>{{ cuenta.tipo_cuenta }}</center></td>
+    </tr>
+
+    {% else %}
+    <tr><td colspan="4"><center>No hay cuentas registradas</center></td></tr>
+    {% endif %}
+   </tbody>
+  </table>
+  </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><h5>DATOS DEL CONTRATO</h5></a>
+        </h5>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">      
+
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th>N° Contrato</th>
+     <th>Valor total</th>
+     <th>Valor mensual</th>
+     <th>Fecha inicio</th>
+     <th>Fecha de terminacion</th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+      
+      
+   <tbody>
+    {% for contrato in contrato %}
+    <tr>
+     <td>{{ contrato.numero_contrato }}</td>
+     <td>${{ contrato.valor_total }}</td>
+     <td>${{ contrato.valor_mensual }}</td>
+     <td>{{ contrato.fecha_inicio }}</td>
+     <td>{{ contrato.fecha_fin }}</td>
+    </tr>
+
+    {% empty %}
+    <tr><td colspan="4"><center>No hay Informacion registrada</center></td></tr>
+    {% endfor %}
+   </tbody>
+
+      <theader>
+      <tr>
+     <th colspan="3"><center> N° compromiso SIIF</center></th>
+     <th colspan="2"><center>Forma de estimacion del pago</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+      
+      
+   <tbody>
+    {% for contrato in contrato %}
+    <tr>
+     <td colspan="3"><center> {{ contrato.compromiso_siif }}</center></td>
+     <td colspan="2"><center>{{ contrato.forma_estimacion }}</center></td>
+  
+    </tr>
+
+    {% empty %}
+    <tr><td colspan="4"><center>No hay Informacion registrada</center></td></tr>
+    {% endfor %}
+   </tbody>
+
+
+  </table>
+
+
+  </div>
+      </div>
+    </div>
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse10"><h5>DATOS DEL PAGO</h5></a>
+        </h5>
+      </div>
+      <div id="collapse10" class="panel-collapse collapse">
+        <div class="panel-body">      
+
+<p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-bordered table-hover">
+    <theader>
+      <tr>
+     <th>N° del Pago</th>
+     <th>Fecha inicio del periodo objeto de pago</th>
+     <th>fecha fin del periodo de pago</th>
+     <th>Saldo anterior del contrato</th>
+     <th>Nuevo saldo del contrato</th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+
+   <tbody>
+    {% for p in pago_mes %}
+    <tr>
+     <td><center>{{ p.numero_pago }}</center></td>
+     <td><center>{{ p.fecha_inicio }}</center></td>
+     <td><center>{{ p.fecha_fin }}</center></td>
+     <td><center>${{ p.saldo_anterior  }}</center></td>
+     <td><center>${{ p.saldo_nuevo }}</center></td>
+    </tr>
+
+    {% empty %}
+    <tr><td colspan="4"><center>No hay N° Pago registrados</center></td></tr>
+    {% endfor %}
+   </tbody>
+  </table>
+
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-bordered table-hover">
+    <theader>
+      <tr>
+     <th><center>Valor mensual</center></th>
+     <th><center>Total dias a liquidar</center></th>
+     <th><center>Valor a pagar</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+
+   <tbody>
+    {% for p in pago_mes %}
+    <tr>
+     <td><center>${{ p.valor_mes }}</center></td>
+     <td><center>{{ p.total_dias_liquidacion }}</center></td>
+     <th colspan="2"><center>${{ p.total_pagar }}</center></th>
+    </tr>
+
+    {% empty %}
+    <tr><td colspan="4"><center>No hay N° Pago registrados</center></td></tr>
+    {% endfor %}
+   </tbody>
+  </table>
+
+</div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><h5>RESUMEN PAGOS GENERADOS EN EL PERIODO OBJETO DE PAGO</h5></a>
+        </h5>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">  
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th><center>Ingresos por comisiones</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+
+   <tbody>
+    {% for comisiones in comisiones %}
+    <tr>
+     <td><center>{{ comisiones.total }}</center></td>
+    </tr>
+
+    {% empty %}
+    <tr><td colspan="4"><center>No hay comisiones registradas</center></td></tr>
+    {% endfor %}
+   </tbody>
+  </table></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><h5>LIQUIDACIÓN DE PAGO A SEGURIDAD SOCIAL Y LIQUIDACIÓN DEL NETO A PAGAR</h5></a>
+        </h5>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">  
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th>Nº Planilla</th>
+     <th>IBC </th>
+     <th>Aporte obligatorio a seguridad social salud</th>
+     <th>Aporte obligatorio a seguridad social Pensión</th>
+     <th>Aporte obligatorio a Fondo de solidaridad Pensional</th>
+     <th>ARL</th>
+     <th>Valor</th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+      
+      
+   <tbody>
+
+
+    {% if contratista.aporte %}
+    <tr>
+     <td>{{ contratista.aporte.numero_plantilla }}</td>
+     <td>{{ contratista.aporte.ibc_aporte }}</td>
+     <td>{{ contratista.aporte.salud_aporte }}</td>
+     <td>{{ contratista.aporte.pension_aporte }}</td>
+     <td>{{ contratista.aporte.solidaridad_aporte }}</td>
+     <td>{{ contratista.aporte.arl_aporte.tipoRiesgo_arl}}</td>
+     <td>{{ contratista.aporte.arl_aporte.valor_arl}}</td>
+    </tr>
+
+    {% else %}
+    <tr><td colspan="4"><center>No hay aportes registrados</center></td></tr>
+    {% endif %}
+   </tbody>
+  </table></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><h5>ACTIVIDADES DESARROLLADAS DURANTE EL PERIODO OBJETO DE PAGO</h5></a>
+        </h5>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">  
+
+  <p>
+  <table>
+   <thead>
+    <tr>
+    <table class="table table-hover">
+    <theader>
+      <tr>
+     <th><center>Nº ficha</center></th>
+     <th><center>Descripcion actividad</center></th>
+     <th><center>Fecha actividad</center></th>
+     <th><center>Horas laboradas</center></th>
+     <th><center>Resultado</center></th>
+     </tr>
+     </theader>
+    </tr>
+   </thead>
+          
+      
+   <tbody>
+    {% if actividades %}
+      {% for a in actividades %}
+        <tr>
+         <td><center>{{ a.numero_ficha }}</center></td>
+         <td><center>{{ a.descripcion_actividad }}</center></td>
+         <td><center>{{ a.fecha_actividad }}</center></td>
+         <td><center>{{ a.horas_laboradas }}</center></td>
+         <td><center>{{ a.resultado }}</center></td>
+        </tr>
+      {% endfor %}
+    {% else %}
+    <tr><td colspan="4"><center>No hay actividades registradas</center></td></tr>
+    {% endif %}
+   </tbody>
+  </table>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+</body>
+
+
+</center>
+
+<div class="container">
+  
+<button type="button" class="btn btn-default"><a href= "{% url 'vista_principal' %}"><svg fill="#337ab7" height="30" viewBox="0 0 20 14" width="20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+</svg> REGRESAR AL INICIO</a></button>
+
+
+<button class="btn btn-primary" type="submit"><a href="{% url 'vista_descargar' %}">Descargar</a></button>
+</div>
+
+<p>
+
+<div class="jumbotron text-center">
+<div class="container">   
+<footer div class="well well-sm">SENA CTPI ADSI <b>901390</b> <br>2016</br></div> </footer>
+</div>
+
+{% endblock contenido %}
+

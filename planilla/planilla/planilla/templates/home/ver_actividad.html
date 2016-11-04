@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Ver actividad
+{% endblock %}
+
+{% block content %}
+	
+	<p><b>Descripcion:</b> {{ actividad.descripcion_actividad }} </p>
+	<p><b>Numero_ficha:</b> {{ actividad.numero_ficha}} </p>
+	<p><b>Resultado:</b> {{ actividad.resultado }} </p>
+	<p><b>Horas laboradas:</b> {{ actividad.horas_laboradas}}Horas</p>
+	
+	<p><b>Fecha de acvidad:</b> {{ actividad.fecha_actividad}}</p>
+	
+	<br>
+	<a  class="btn btn-success" href="/actividades/page/1">Mostrar la lista de Actividades</a>
+{% endblock %}

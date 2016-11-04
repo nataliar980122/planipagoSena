@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Planilla de Pago
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  <h3>FORMATO PARA PAGO DE CONTRATO DE PRESTACIÓN DE SERVICIOS PERSONALES CAUCA	CENTRO DE TELEINFORMATICA Y PRODUCCION INDUSTRIAL</h3>
+  <p>
+<p>
+
+
+  <div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong>  Revisa que toda la información este correcta y descarga tu planilla de pago.
+  </div>
+<div class="container">
+<p>
+
+
+{% if contratista %}
+
+
+<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>Código Regional</center></th>
+			<th><center>Código Centro</center></th>
+			<th><center>Fecha elaboración</center></th>
+			<th><center>Versión</center></th>
+			</tr>
+		</theader>	
+
+	</table>
+	
+	
+	<table class="table table-condensed">
+		<theader>
+		<center><h4>DATOS DEL CONTRATISTA</h4></center>
+			<tr>
+				<th><center>Nombres y apellidos contratista:</center></th>
+				<th><center>Correo electrónico contratista:</center></th>
+			</tr>
+		</theader>
+
+
+
+
+		{% for c in contratista %}
+			<tbody>
+				<tr class="success">
+					<td>{{ c.nombre }}</td>		
+					<td>{{ c.correo }}</td>
+					<td><a class = "btn btn-info" href="/contratista/{{c.id}}"> <li class = "icon-search"> </li> Ver </a></td>
+				</tr>
+			</tbody>
+		{% endfor %}
+
+
+
+		
+		<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>Régimen del IVA:</center></th>
+			<th><center>Clasificación P.N.</center></th>
+			<th><center>Banco al cual consignar:</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>C.C.</center></th>
+			<th><center> Es declarante de renta?</center></td>
+			<th><center> Presta Servicios Excluidos de IVA ?</center></th>
+			<th><center>Tipo de cta</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>IP/Nº de contacto</center></tth>
+			<th><center>Es Pensionado?</center></th>
+			<th><center>Nº Cuenta</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<center><h4>DATOS DEL CONTRATO Y PERIODO OBJETO DE PAGO</h4></center>
+			<tr>
+				<th><center>Nº del contrato: </center></th>
+				<th><center>Nº Compromiso SIIF</center></th>
+			</tr>
+
+		</theader>
+	</table>	
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>Valor Total del Contrato</center></tth>
+			<th><center>Saldo Anterior del Contrato</center></th>
+			<th><center>Nuevo Saldo del Contrato</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>N ° Pago</center></tth>
+			<th><center>Periodo objeto de pago</center></th>
+			<th><center>Valor Bruto Pago</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<center><h4>RESUMEN PAGOS GENERADOS EN EL PERIODO OBJETO DE PAGO</h4></center>
+			<tr>
+				<th><center>Ingresos por honorarios</center></th>
+				<th><center>Ingresos por comisiones</center></th>
+				<th><center>Ingresos de otros meses cobrados en el mes</center></th>
+			</tr>
+
+		</theader>
+	</table>	
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>TOTAL INGRESOS DEL PERIODO</center></tth>
+			<th><center>BASE PARA RETENCION EN LA FUENTE</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Tarifa de Retencion en la Fuente ART 383°</center></tth>
+				<th><center>Retencion en la Fuente del Periodo </center></th>
+				<th><center>Menos, Retefuente Comisiones</center></th>
+				</tr>
+			</theader>	
+		</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<tr>
+			<th><center>Menos, Retefuente Otros Ingresos</center></tth>
+			<th><center>TOTAL RETEFUENTE PRESENTE PAGO</center></th>
+			</tr>
+		</theader>	
+	</table>
+
+	<table class="table table-condensed">
+		<theader>
+		<center><h4>LIQUIDACIÓN DE PAGO A SEGURIDAD SOCIAL Y LIQUIDACIÓN DEL NETO A PAGAR</h4></center>
+			<tr>
+				<th><center>Nº Planilla PILA, o , Nº Radiocación pago SS</center></th>
+				<th><center>IBC</center></th>
+				<th><center>Aporte obligatorio a seguridad social salud</center></th>
+			</tr>
+
+		</theader>
+	</table>	
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Aporte obligatorio a seguridad social salud</center></tth>
+				<th><center>Aporte obligatorio a seguridad social Pensión</center></th>
+			</tr>
+			</theader>	
+		</table>
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Aporte obligatorio a Fondo de solidaridad Pensional</center></tth>
+				<th><center>ARL</center></th>
+				<th><center>Aportes voluntarios a cuentas AFC</center></th>
+			</tr>
+			</theader>	
+		</table>
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Aporte voluntario a Fondos de pensiones </center></tth>
+				<th><center>Intereses Prestamo de Vivienda</center></th>
+			</tr>
+			</theader>	
+		</table>
+		
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Salud hasta</center></tth>
+				<th><center>Retención en la Fuente Contingente</center></th>
+			</tr>
+			</theader>	
+		</table>		
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Valor Base retención en la fuente </center></tth>
+				<th><center>Valor base IVA</center></th>
+				<th><center>IVA (Si es régimen común)</center></th>
+			</tr>
+			</theader>	
+		</table>
+		
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Menos Retención en la Fuente </center></tth>
+				<th><center>Menos Retencion IVA  16%</center></th>
+				<th><center>Reteica</center></th>
+			</tr>
+			</theader>	
+		</table>			
+			
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Otras Retenciones</center></tth>
+				<th><center>Otras Retenciones</center></th>
+				<th><center>Otras Retenciones</center></th>
+			</tr>
+			</theader>	
+		</table>
+		
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>Descuentos de embargo (Si tiene)</center></tth>
+				<th><center>VALOR A PAGAR</center></th>
+			</tr>
+			</theader>	
+		</table>	
+
+	<table class="table table-condensed">
+			<theader>
+			<tr>
+				<th><center>#REF!</center></th>
+			</tr>
+			</theader>	
+		</table>	
+
+	<table class="table table-condensed">
+		<theader>
+		<center><h4>ACTIVIDADES DESARROLLADAS DURANTE EL PERIODO OBJETO DE PAGO</h4></center>
+			
+	</table>				
+	{% else %}
+	
+		<h2>No hay planilla de pago</h2>
+		
+	{% endif %}
+	
+{% endblock %}
+

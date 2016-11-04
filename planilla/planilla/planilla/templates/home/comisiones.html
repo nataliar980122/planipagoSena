@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Comisiones {% endblock %}
+{% block content %}
+<div class="container">
+		<h2>Datos Comisiones</h2>
+		<div class="container">
+			<form class="form-inline" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="registrar" value="Guardar" class="btn btn-success">
+		
+				<a  class="btn btn-primary" href="/comilista/page/1/"> Volver</a>
+
+		
+		 	</form>
+		</div>
+	</div>		
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Registro {% endblock %}
+{% block content %}
+<div class="container">
+		<h2>Aportes a seguridad social y ahorro en cuentas AFC</h2>
+		<div class="container">
+			<form class="form-inline" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="registrar" value="Guardar" class="btn btn-success">
+
+				<a class="btn btn-primary" href="{% url 'vista_listaaportes' %}">Volver</a>
+				<input class="btn btn-info" type ="reset" value="Limpiar">
+				
+
+		
+		 	</form>
+		</div>
+	</div>		
+</div>
+{% endblock %}	

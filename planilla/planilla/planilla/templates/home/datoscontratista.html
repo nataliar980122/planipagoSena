@@ -1,0 +1,17 @@
+ {% extends "base.html" %}
+{% block title %} Registro {% endblock %}
+{% block content %}
+	<h2>Datos Contratista</h2>
+		<form class="form-horizontal" method="POST">
+			<div class="form-inline">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="registrar" value="Aceptar" class="btn btn-success">				
+			</div>
+		</form>	
+{% endblock %}
+
+
+
+
+

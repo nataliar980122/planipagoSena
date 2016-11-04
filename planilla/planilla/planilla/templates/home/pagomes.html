@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Pago Mes {% endblock %}
+{% block content %}
+<div class="container">
+	<div >
+		<h2>Datos para tu pago mensual </h2>
+		<br>
+		<br>
+		<div class="container">
+			<form class="form-inline" method="POST">
+			<div class="form-group">
+	    		<label>Valor mensual</label>
+	    		<label>:    ${{valor_mes}} </label>
+  			</div>
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" name="aceptar" value="Aceptar" class="btn btn-success">
+			</form>	
+		</div>	
+	</div>
+</div>
+
+
+{% endblock %}
+
+

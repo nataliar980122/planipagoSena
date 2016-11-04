@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Nosotros
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+  {% if estado == 'Inactivo' %}
+    <p> Lo sentimos estas sin trabajo</p>
+    {% else %}
+	 
+	{% if lista %}
+  	<table class="table table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Numero Del Contrato</th>
+      <th>valor total</th>
+      <th>estado</th>
+      <th>opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+    {% for c in lista %}
+      <td>{{c.numero_contrato}}</td>
+      <td>{{c.valor_total}}</td>
+      <td>{{c.estado}}</td>
+      <td><a class = "btn  btn-warning" href="/edit/contrato/{{ c.id }}"><li class = "	glyphicon glyphicon-edit"></li>  Modificar</a></td>
+      {% endfor %}
+          </tr>
+    </tbody></table>
+				
+	{% else %}
+  <a class ="btn btn-success" href="{% url 'vista_agregar_contrato' %}">Registrar Contrato <li class ="glyphicon glyphicon-plus"></li></a>
+   <br>
+   <br>
+		<h2>No existen Contratos disponibles </h2>
+	{% endif %}		
+  {% endif %} 
+  {% endif %} 
+		
+
+
+	
+	
+{% endblock %}
+	

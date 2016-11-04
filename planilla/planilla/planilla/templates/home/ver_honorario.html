@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+	Ver honorario
+{% endblock %}
+
+{% block content %}
+
+	
+
+		
+	<h4><b>Concepto:</b> {{ honorario.concepto }} </h4>
+	<h4><b>Valor de hora:</b> {{ honorario.valor_hora }} </h4>
+	<h4><b>Valor retenido:</b> {{ honorario.valor_retenido }} </h4>
+	
+
+	
+	
+	<br>
+	<a class="btn btn-success" href="/honoralista/page/1">Mostrar la lista de Honorarios</a>
+{% endblock %}

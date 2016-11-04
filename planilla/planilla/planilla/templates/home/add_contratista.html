@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+	<title>Agregar Contratista</title> 
+{% endblock %}
+	
+{% block content %}
+	<form action="." method="POST" class="form-horizontal" enctype = "multipart/form-data">
+		<div class="form-group">
+
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="btn btn-success"> Guardar </button>
+			<input class="btn btn-inverse" type="reset" value="Limpiar">
+		</div>
+	</form>
+	<br>
+	
+	{{ info }}
+	
+{% endblock %}

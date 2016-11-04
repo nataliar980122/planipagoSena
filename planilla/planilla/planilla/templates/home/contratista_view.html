@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Datos contratista
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+	 
+	{% if lista %}
+  	<table class="table table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Identificacion</th>
+      <th>Correo</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    {% for c in lista %}
+      <td>{{c.nombre}}</td>
+      <td>{{c.apellido}}</td>
+      <td>{{c.identificacion}}</td>
+      <td>{{c.correo}}</td>
+      <td><a class = "btn  btn-warning" href="/edit/contratista/{{ c.id }}"><li class = "	glyphicon glyphicon-edit"></li>  Modificar</a></td>
+      {% endfor %}	
+    </tr>
+    </tbody></table>
+				
+	{% else %}
+  <a class ="btn btn-success" href="{% url 'vista_datoscontratista' %}">Registrar Datos Contratista <li class ="glyphicon glyphicon-plus"></li></a>
+   <br>
+   <br>
+		<h2>No existen Contratos disponibles </h2>
+	{% endif %}		
+	{% endif %}	
+
+	
+	
+{% endblock %}
+	

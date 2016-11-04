@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de actividades
+	{% endblock %}
+
+{% block content %}
+<h2>Lista de Actividades</h2>
+<br>
+<a class="btn btn-primary" href="{% url 'vista_agregar_actividad' %}"><li class="glyphicon glyphicon-plus"></li>Agregar nueva actividad</a>
+<br><br>
+{% if actividades %}
+<table class = "table table-bordered table-hover">
+		<theader>
+			<tr>
+				<th>Descripcion</th>
+				<th>Horas Laboradas</th>
+				<th>Fecha</th>
+				<th colspan="3">Opciones</th>
+			</tr>
+		</theader>
+	{% for a in actividades %}
+		<tbody>
+				<tr>
+					<td>{{ a.descripcion_actividad }}</td>
+					<td>{{ a.horas_laboradas }}</td>
+					<td>{{ a.fecha_actividad }}</td>
+					<td><a  class= "btn btn-info" href="/actividad/{{a.id}}"><li class="glyphicon glyphicon-eye-open"></li> </li>Ver</a></td>
+					<td><a class="btn btn-warning" href="/edit/actividad/{{ a.id }}"><li class="glyphicon glyphicon-pencil"></li>  </li> Editar</a>
+					<td><a class="btn btn-danger" href="/del/actividad/{{ a.id }}/"><li class="glyphicon glyphicon-remove"></li>Eliminar</a></td> 
+					</td>	
+				</tr>
+		</tbody>
+
+	{% endfor %}
+	</table>	
+	{% else %}
+		<h2> No existen Activivdades agregadas :( </h2>
+	{% endif %}
+	{% if actividades %}
+	<div class="pagination">
+		<div class="pagination pagination-centered">
+			<ul >
+				<button class="btn btn-success"><a href="actividades/page/1"> << </a></button>
+				{% if actividades.has_previous %} 
+				<<button class="btn btn-success"><a href="/actividades/page/{{ actividades.previous_page_number }}">Anterior </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#"> Anterior </a></button>
+				{% endif %}
+
+				{% if actividades.has_next %}
+					<button class="btn btn-success"><a href="/actividades/page/{{ actividades.next_page_number }}">Siguiente </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#">Siguiente </a></button>
+				{% endif %}
+					<button class="btn btn-success"><a href="/actividades/page/{{ actividades.paginator.num_pages }}"> >> </a></button>
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ actividades.number }} de {{ actividades.paginator.num_pages }} </h4>
+	{% endif %}
+			
+
+
+
+
+{% endblock %}

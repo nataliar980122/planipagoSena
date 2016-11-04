@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+	Ver comisiones
+{% endblock %}
+
+{% block content %}
+	
+	
+	<p><b>Numero de comision:</b> {{ comisiones.numero_comision}} </p>
+	<p><b>Valor de comision :</b> {{ comisiones.valor_comision }} </p>
+	<p><b>Valor retenido:</b> {{ comisiones.valor_retenido }} </p>
+	
+	<p><b>Numero de contrato:</b> {{ contrato}}</p>
+
+	
+	
+	<br>
+	<a class="btn btn-success" href="/comilista/page/1">Mostrar la lista de comisiones</a>
+{% endblock %}

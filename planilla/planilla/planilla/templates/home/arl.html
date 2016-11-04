@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Arl {% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="jumbotron">
+		<h2>Arl</h2>
+		<div class="container">
+			<form class="form-inline" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				 <div class="form-group">
+				<select name="tipo" class="selectpicker" class="form-control">
+					<option class="form-control" value="1">I</option>
+  					<option class="form-control" value="2">II</option>
+  					<option  class="form-control" value="3">III</option>
+  					<option  class="form-control" value="4">IV</option>
+  					<option  class="form-control" value="5">V</option>
+				</select>
+				</div>
+				</BR>
+				<input type="submit" name="registrar" value="Guardar" class="btn btn-success">
+				</form>
+		</div>
+	</div>		
+</div>	
+
+{% endblock %}

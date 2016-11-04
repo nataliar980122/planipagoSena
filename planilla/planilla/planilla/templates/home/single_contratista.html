@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+	Producto
+{% endblock %}
+
+{% block content %}
+	<h1>{{ contratista.nombre }}  {{ contratista.apellido }}</h1>
+	{% if contratista.imagen %}
+		<img src="/media/{{ contratista.imagen }}" width ="80px" heigth ="80px">
+	{% endif %}	
+	<br> 
+	<p><b>Identificacion:</b> {{ contratista.identificacion }}</p>
+	<p><b>Telefono:</b> {{ contratista.telefono }} </p>
+	<p><b>Correo:</b> {{ contratista.correo }} </p>
+	<p><b>Declarante:</b> {{ contratista.declarante }} </p>
+	<p><b>Pensionado:</b> {{ contratista.pensionado }} </p>
+	<p><b>Centro:</b> {{ contratista.centro }} </p>
+	<p><b>N° Contrato:</b> {{ contratista.contrato }} </p>
+	<p><b>Estado del contrato:</b> {{ contratista.contrato.estado }} </p>
+
+	<br>
+	<a class="btn btn-success " href="/contratistas/">Volver</a>
+{% endblock %}

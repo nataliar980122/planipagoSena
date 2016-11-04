@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Planilla de Pago
+{% endblock %}
+
+{% block content %}
+	<h1>{{ planilla.nombre }}</h1>
+	
+	<br>
+	<p><b>Nombre:</b> {{ planilla.nombre }} </p>
+	<br>
+	<p><b>Correo:</b> {{ planilla.correo }} </p>
+						
+
+	<br>
+	  <!-- Trigger the modal with a button -->
+  <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Planilla de Pago</button></center>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Planilla</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+          	<h1>Planilla de Pago</h1>
+			<br>
+	
+			{% if planilla %}
+			<table class="table table-condensed">
+				<theader>
+					<tr>
+						<th>Nombre</th>
+						<th>Correo</th>
+					</tr>
+				</theader>
+				{% for p in planilla %}
+					<tbody>
+						<tr class="success">
+							<td>{{ p.nombre }}</td>		
+							<td>{{ p.correo }}</td>
+							<td><a class = "btn btn-info" href="/planilla/{{p.id}}"> <li class = "icon-search"> </li> Ver </a></td>
+						</tr>
+					</tbody>
+				{% endfor %}
+			</table>
+			{% else %}
+				<h2>No hay Planilla de Pago	</h2>
+			{% endif %}
+           
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}
+
+
+
+

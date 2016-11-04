@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Agregar {{vista}}
+{% endblock %}
+
+{% block content %}
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2000:2030",
+      dateFormat: 'dd/mm/yy',
+      // You can put more options here.
+
+    });
+  });
+  </script>
+
+  <script>
+  $(function() {
+    $( "#datepicker2" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2000:2030",
+      dateFormat: 'dd/mm/yy',
+      // You can put more options here.
+
+    });
+  });
+  </script>
+	<form action="." method="POST" enctype = "multipart/form-data">
+		<div class="form-group">
+			{% csrf_token %}
+			{{form.as_p}}
+			<button type="submit" class="btn btn-success" > Guardar </button>
+			<a  class="btn btn-warning" href="/contrato/"> Volver</a>
+		</div>
+	</form>
+	<br>
+
+	{{ info }}
+{% endblock %}
+
+

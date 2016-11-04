@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Registrar Centro {% endblock %}
+{% block content %}
+	<h2>Registrar Centro</h2>
+	<form class="form-inline" method="POST" action="">{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" name="registrar" value="Aceptar" class="btn btn-success">
+	</form>
+{% endblock %}

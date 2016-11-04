@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Datos aportes del Contratista
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+	 
+	{% if listaaportes %}
+  	<table class="table table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Numero Planitilla</th>
+      <th>Tipo Riesgo ARL</th>
+      <th>Aporte Pension</th>
+      <th>APorte AFC</th>
+      <th>Prestamo Vivienda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    {% for c in listaaportes %}
+      <td>{{c.numero_plantilla}}</td>
+      <td>{{c.tipoRiesgo_arl}}</td>
+      <td>{{c.pension_aporte}}</td>
+      <td>{{c.aporte_vafc}}</td>
+      <td> <a class = "btn btn-primary" href="/edit/aporte/{{ c.id }}"> Editar</a></td>
+      {% endfor %}	
+    </tr>
+    </tbody></table>
+				
+	{% else %}
+  <a class ="btn btn-success" href="{% url 'vista_aportes' %}">Registrar Aportes <li class ="glyphicon glyphicon-plus"></li></a>
+   <br>
+   <br>
+		<h2>No existen Aportes disponibles </h2>
+	{% endif %}		
+	{% endif %}	
+
+	
+	
+{% endblock %}

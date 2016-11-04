@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Nosotros
+{% endblock %}
+
+{% block content %}
+  <center><h1>Estados del contrato</h1></center>
+  <br>
+
+<div class="container">
+  <h2>Estado actual del contrato: </h2>
+  <p></p>
+  <form action="." method = "POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p}}
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Opciones
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Habilitadar</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Suspender</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Aplazar</a></li>
+
+    <p></p>
+      </ul>
+    </div>
+    
+  </form>
+  
+
+
+
+{% endblock %}

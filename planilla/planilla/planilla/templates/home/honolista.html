@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de honorarios
+	{% endblock %}
+
+{% block content %}
+<h2>Lista de Honorarios</h2>
+<br>
+<a class="btn btn-primary" href="{% url 'vista_agregar_honorario' %}"><li class="glyphicon glyphicon-plus"></li>Agregar nuevo honorario</a>
+<br>
+<br>
+{% if honolista %}
+<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Concepto</th>
+				<th>Valor hora </th>
+				<th>Valor retenido </th>
+				<th colspan="2">opciones</th>
+								
+			</tr>
+		</theader>
+	{% for ho in honolista %}
+		<tbody>
+				<tr>
+					<td>{{ ho.concepto }}</td>
+					<td>{{ ho.valor_hora }}</td>
+					<td>{{ ho.valor_retenido }}</td>
+					
+					<td><a  class= "btn btn-info" href="/honorario/{{ho.id}}"><li class="glyphicon glyphicon-eye-open"></li> Ver</a></td>
+					
+					<td><a class="btn btn-warning" href="/edit/honoralista/{{ ho.id }}"><li class="glyphicon glyphicon-pencil"></li> Editar</a> 
+						
+					</td>
+
+					<td><a class="btn btn-danger" href="/del/honoralista/{{ ho.id }}"> <li class="glyphicon glyphicon-remove"></li>Eliminar</a></td>
+					</td
+					
+				</tr>
+		</tbody>
+
+	{% endfor %}
+	</table>	
+	{% else %}
+		<h2> No existen honorarios agregadas :( </h2>
+	{% endif %}
+
+	
+<table class="table table-hover">
+		<tbody>
+			<tr>
+				<th>Total de hora</th>
+				<th>Total de valor retenido</th>
+
+				
+				
+		 	</tr>
+
+		 	<tr>
+		 		<td>{{ total_hora }}</td>
+				<td>{{ total_retenido }}</td>
+
+		 	</tr>
+		 
+		
+			
+	
+	 </tbody>
+	</table></div>
+		</tbody>
+
+	
+	</table>	
+	
+
+
+	{% if honolista %}
+	<div class="pagination">
+		<div class="pagination pagination-centered">
+			<ul >
+				<button class="btn btn-success"><a href="honolista/page/1"> << </a></button>
+				{% if actividades.has_previous %} 
+				<<button class="btn btn-success"><a href="/honolista/page/{{ honolista.previous_page_number }}">Anterior </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#"> Anterior </a></button>
+				{% endif %}
+
+				{% if actividades.has_next %}
+					<button class="btn btn-success"><a href="/honolista/page/{{ honolista.next_page_number }}">Siguiente </a></button>
+				{% else %}
+					<button class="btn btn-success"><a href="#">Siguiente </a></button>
+				{% endif %}
+					<button class="btn btn-success"><a href="/honolista/page/{{ honolista.paginator.num_pages }}"> >> </a></button>
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ honolista.number }} de {{ honolista.paginator.num_pages }} </h4>
+	{% endif %}
+			
+
+
+	
+{% endblock %}

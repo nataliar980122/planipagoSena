@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Modificar Contrato {% endblock %}
+{% block content %}
+
+ 
+<div class="container">
+	<div class="jumbotron">
+		<h2>Registrar Contrato </h2>
+	<div class="container">
+		<form class="form-inline" method="POST" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<input type="submit" name="registrar" value="REGISTRAR" class="btn btn-success">
+	 	</form> 	
+	
+	</div>
+</div>
+</div>
+
+{% endblock %}	

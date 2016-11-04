@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block title %} Modificar Contrato {% endblock %}
+{% block content %}
+
+{% block content %}
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2000:2030",
+      dateFormat: 'dd/mm/yy',
+      // You can put more options here.
+
+    });
+  });
+  </script>
+
+  <script>
+  $(function() {
+    $( "#datepicker2" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2000:2030",
+      dateFormat: 'dd/mm/yy',
+      // You can put more options here.
+
+    });
+  });
+  </script>
+ 
+<div class="container">
+	<div class="jumbotron">
+		<h2>Modificar Contrato </h2>
+	<div class="container">
+		<form class="form-inline" method="POST" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<input type="submit" name="registrar" value="ACEPTAR" class="btn btn-success">
+	 	</form> 	
+	
+	</div>
+</div>
+</div>
+
+{% endblock %}	

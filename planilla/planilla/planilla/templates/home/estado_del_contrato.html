@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+	Estado del Contrato
+{% endblock %}
+	
+{% block content %}
+
+<center><h1>Cambiar el estado del contrato</h1>
+	<form action="." method="POST" enctype = "multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<br></br> 
+		<button type="submit" class="btn btn-success"> Guardar cambios </button>
+		</center>
+	</form>
+	<br>
+	
+	{{ info }}
+
+{% endblock %}
